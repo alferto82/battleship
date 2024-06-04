@@ -1,0 +1,10 @@
+/* src/components/Grid.css */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 30px); /* Ajusta el tamaño de las columnas según sea necesario */
+  grid-template-rows: repeat(10, 30px); /* Ajusta el tamaño de las filas según sea necesario */
+  gap: 1px; /* Espacio entre celdas */
+}
+
+

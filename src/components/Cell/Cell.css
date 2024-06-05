@@ -1,21 +1,22 @@
-/* src/components/Cell.css */
+/* src/components/Cell/Cell.css */
 
 .cell {
   width: 30px;
   height: 30px;
-  background-color: #cee6f5; /* Azul suave para el mar */
-  border: 1px solid #d2d2d2; /* Borde de las celdas */
-  padding: 2px;
+  background-color: #8db9e2; /* Azul menos intenso */
+  align-items: center;
+  justify-content: center;
 }
 
-.cell:hover {
-  background-color: #465280; /* Color de fondo al pasar el ratón por encima */
+.cell.hit {
+  background-color: red; /* Golpe */
 }
 
-.hit {
-  background-color: #4c0f0f; /* Rojo suave para el golpe */
+.cell.miss {
+  background-color: gray; /* Fallo */
 }
 
-.miss {
-  background-color: #2e2e2e; /* Gris suave para el fallo */
+.cell:not(.hit):not(.miss):hover {
+  background-color: #6ba8d0; /* Color de fondo al pasar el ratón por encima */
+  cursor: pointer;
 }

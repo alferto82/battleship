@@ -1,4 +1,4 @@
-// Cell.tsx
+// src/components/Cell/Cell.tsx
 
 import React from "react";
 import "./Cell.css";
@@ -14,11 +14,13 @@ const Cell: React.FC<CellProps> = ({ value, onClick }) => {
     className += " hit";
   } else if (value === "O") {
     className += " miss";
-  } else if (value === "S") {
-    className += " ship";
   }
 
-  return <button className={className} onClick={onClick} />;
+  return (
+    <div className={className} onClick={onClick}>
+      {value}
+    </div>
+  );
 };
 
 export default Cell;

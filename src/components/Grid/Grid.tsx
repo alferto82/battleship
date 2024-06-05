@@ -1,7 +1,7 @@
-// Grid.tsx
+// src/components/Grid/Grid.tsx
 
 import React from "react";
-import { Coordinate, GameState } from "../../types/types";
+import { GameState } from "../../types/types";
 import Cell from "../Cell/Cell";
 import "./Grid.css";
 
@@ -20,14 +20,12 @@ const Grid: React.FC<GridProps> = ({ size, gameState, onCellClick }) => {
 
   const hasShip = (row: number, col: number) => {
     return ships.some((ship) =>
-      ship.some((part: Coordinate) => part.row === row && part.col === col)
+      ship.some((part) => part.row === row && part.col === col)
     );
   };
 
   const isMiss = (row: number, col: number) => {
-    return misses.some(
-      (miss: Coordinate) => miss.row === row && miss.col === col
-    );
+    return misses.some((miss) => miss.row === row && miss.col === col);
   };
 
   return (

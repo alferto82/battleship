@@ -1,45 +1,37 @@
-// Game.tsx
+// src/components/Game/Game.tsx
 
-import React, { useState } from "react";
-import { GameState } from "../../types/types";
-import { generateShips, checkForHits } from "../../utils";
+import React from "react";
 import Grid from "../Grid/Grid";
+import { useGameContext } from "../../context/GameContext";
+import { Coordinate } from "../../types/types";
 
 const Game: React.FC = () => {
+  const { gameState, updateGameState } = useGameContext();
   const gridSize = 10;
-  const [gameState, setGameState] = useState<GameState>({
-    hits: [],
-    ships: generateShips(gridSize),
-    misses: [], // Agregamos una lista de "misses" al estado del juego
-  });
-  const [gameFinished, setGameFinished] = useState<boolean>(false);
 
   const handleCellClick = (row: number, col: number) => {
-    if (!gameFinished) {
-      const updatedHits = [...gameState.hits];
-      const updatedMisses = [...gameState.misses]; // Copiamos la lista de "misses" actual
+    const updatedHits = [...gameState.hits];
+    const updatedMisses = [...gameState.misses];
 
-      const isHit = checkForHits(gameState.ships, row, col);
+    const isHit = gameState.ships.some((ship: Coordinate[]) =>
+      ship.some((part: Coordinate) => part.row === row && part.col === col)
+    );
 
-      if (isHit) {
+    if (isHit) {
+      if (!updatedHits.some((hit) => hit.row === row && hit.col === col)) {
         updatedHits.push({ row, col });
-        setGameState((prevState: GameState) => ({
-          ...prevState,
-          hits: updatedHits,
-        }));
-      } else {
-        updatedMisses.push({ row, col }); // Agregamos la casilla clicada a la lista de "misses"
-        setGameState((prevState: GameState) => ({
-          ...prevState,
-          misses: updatedMisses,
-        }));
+        updateGameState({ ...gameState, hits: updatedHits });
       }
-
-      // Verificamos si todos los barcos han sido alcanzados
-      if (updatedHits.length === gameState.ships.flat().length) {
-        setGameFinished(true);
+    } else {
+      if (!updatedMisses.some((miss) => miss.row === row && miss.col === col)) {
+        updatedMisses.push({ row, col });
+        updateGameState({ ...gameState, misses: updatedMisses });
       }
     }
+
+    /*  if (updatedHits.length === gameState.ships.flat().length) {
+      alert("¡Todos los barcos han sido hundidos! ¡Felicidades!");
+    } */
   };
 
   return (
@@ -50,7 +42,7 @@ const Game: React.FC = () => {
         gameState={gameState}
         onCellClick={handleCellClick}
       />
-      {gameFinished && (
+      {gameState.hits.length === gameState.ships.flat().length && (
         <div>¡Todos los barcos han sido hundidos! ¡Felicidades!</div>
       )}
     </div>

@@ -1,12 +1,15 @@
 // src/App.tsx
 
-import React, { useState } from "react";
+import React from "react";
 import Game from "./components/Game/Game";
+import { GameProvider } from "./context/GameContext";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <GameProvider>
       <Game />
-    </div>
+    </GameProvider>
   );
 };
+
+export default App;

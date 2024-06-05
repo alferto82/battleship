@@ -1,4 +1,4 @@
-/* src/components/Grid.css */
+/* src/components/Grid/Grid.css */
 
 .grid {
   display: grid;
@@ -7,4 +7,7 @@
   gap: 1px; /* Espacio entre celdas */
 }
 
-
+.row {
+  display: grid;
+  gap: 1px;
+}

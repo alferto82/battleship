@@ -42,7 +42,11 @@ const Game: React.FC = () => {
     }
   };
 
-const Game: React.FC = () => {
+  return (
+    <div className="Game">
+      <h1>Battleships Game</h1>
+      <Grid
+        size={gridSize}
         gameState={gameState}
         onCellClick={handleCellClick}
       />

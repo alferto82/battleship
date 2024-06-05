@@ -1,5 +1,3 @@
-// src/components/Cell/Cell.tsx
-
 import React from "react";
 import "./Cell.css";
 import { CellState } from "../../types/types";
@@ -21,7 +19,7 @@ const Cell: React.FC<CellProps> = ({ state, onClick }) => {
 
   return (
     <button className={className} onClick={onClick}>
-      {state}
+      {state.charAt(0)}
     </button>
   );
 };

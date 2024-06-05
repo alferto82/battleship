@@ -9,9 +9,12 @@ interface GameContextType {
   updateGameState: (newState: GameState) => void;
 }
 
+const DEFAULT_SIZE = 10;
+
 const initialGameState: GameState = {
+  size: DEFAULT_SIZE,
   hits: [],
-  ships: generateShips(10),
+  ships: generateShips(DEFAULT_SIZE, [5, 4, 4]),
   misses: [],
 };
 

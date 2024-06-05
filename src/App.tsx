@@ -1,13 +1,14 @@
 // src/App.tsx
 
 import React from "react";
-import Game from "./components/Game/Game";
 import { GameProvider } from "./context/GameContext";
+import "./App.css";
+import GameBoard from "./components/GameBoard/GameBoard";
 
 const App: React.FC = () => {
   return (
     <GameProvider>
-      <Game />
+      <GameBoard />
     </GameProvider>
   );
 };

@@ -4,10 +4,12 @@ import React from "react";
 import Grid from "../Grid/Grid";
 import { useGameContext } from "../../context/GameContext";
 import { Coordinate } from "../../types/types";
+import Terminal from "../Terminal/Terminal";
+import "./GameBoard.css";
+import { WinningMessage } from "../WinningMessage/WinningMessage";
 
-const Game: React.FC = () => {
+const GameBoard: React.FC = () => {
   const { gameState, updateGameState } = useGameContext();
-  const gridSize = 10;
 
   const gameFinished = gameState.hits.length === gameState.ships.flat().length;
 
@@ -37,18 +39,16 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="Game">
-      <h1>Battleships Game</h1>
-      <Grid
-        size={gridSize}
-        gameState={gameState}
-        onCellClick={handleCellClick}
-      />
-      {gameFinished && (
-        <div>¡Todos los barcos han sido hundidos! ¡Felicidades!</div>
-      )}
+    <div className="gameWrapper">
+      <h1 className="title">Battleships Game</h1>
+      <div className="gameBoard">
+        <Grid onCellClick={handleCellClick} />
+
+        <Terminal onCellSubmit={handleCellClick} />
+      </div>
+      {gameFinished && <WinningMessage />}
     </div>
   );
 };
 
-export default Game;
+export default GameBoard;

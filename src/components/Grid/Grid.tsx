@@ -1,18 +1,18 @@
 // src/components/Grid/Grid.tsx
 
 import React from "react";
-import { CellState, GameState } from "../../types/types";
+import { useGameContext } from "../../context/GameContext";
+import { CellState } from "../../types/types";
 import Cell from "../Cell/Cell";
 import "./Grid.css";
 
 interface GridProps {
-  size: number;
-  gameState: GameState;
   onCellClick: (row: number, col: number) => void;
 }
 
-const Grid: React.FC<GridProps> = ({ size, gameState, onCellClick }) => {
-  const { hits, ships, misses } = gameState;
+const Grid: React.FC<GridProps> = ({ onCellClick }) => {
+  const { gameState } = useGameContext();
+  const { hits, ships, misses, size } = gameState;
 
   const isHit = (row: number, col: number) => {
     return hits.some((hit) => hit.row === row && hit.col === col);
@@ -29,15 +29,11 @@ const Grid: React.FC<GridProps> = ({ size, gameState, onCellClick }) => {
   };
 
   const getCellState = (row: number, col: number): CellState => {
-    if (hits.some((hit) => hit.row === row && hit.col === col)) {
+    if (isHit(row, col)) {
       return CellState.HIT;
-    } else if (misses.some((miss) => miss.row === row && miss.col === col)) {
+    } else if (isMiss(row, col)) {
       return CellState.MISS;
-    } else if (
-      ships.some((ship) =>
-        ship.some((part) => part.row === row && part.col === col)
-      )
-    ) {
+    } else if (hasShip(row, col)) {
       return CellState.SHIP;
     } else {
       return CellState.EMPTY;

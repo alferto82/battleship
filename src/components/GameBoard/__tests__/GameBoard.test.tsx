@@ -3,7 +3,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { GameProvider } from "../../../context/GameContext";
-import { Game } from "../Game";
+import { Game } from "../GameBoard";
 
 // Mock de la generación de barcos para devolver una matriz predefinida de coordenadas
 jest.mock("../../../utils", () => ({

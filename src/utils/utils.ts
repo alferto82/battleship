@@ -1,5 +1,3 @@
-// utils.ts
-
 import { Coordinate } from "../types/types";
 
 const generateRandomCoordinate = (max: number) => {
@@ -20,9 +18,11 @@ const isOverlapping = (ship: Coordinate[], ships: Coordinate[][]) => {
   );
 };
 
-export const generateShips = (gridSize: number): Coordinate[][] => {
-  const ships: Coordinate[][] = [];
-  const shipSizes = [5, 4, 4]; // Tamaños de los barcos: 1x Battleship (5 squares), 2x Destroyers (4 squares)
+export const generateShips = (
+  gridSize: number,
+  shipSizes: number[]
+): Coordinate[][] => {
+  let shipsCoordinates: Coordinate[][] = [];
 
   for (const size of shipSizes) {
     let ship: Coordinate[];
@@ -49,12 +49,12 @@ export const generateShips = (gridSize: number): Coordinate[][] => {
           }
         }
       }
-    } while (ship.length !== size || isOverlapping(ship, ships));
+    } while (ship.length !== size || isOverlapping(ship, shipsCoordinates));
 
-    ships.push(ship);
+    shipsCoordinates.push(ship);
   }
 
-  return ships;
+  return shipsCoordinates;
 };
 
 export const checkForHits = (

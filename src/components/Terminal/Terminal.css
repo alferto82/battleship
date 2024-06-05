@@ -1,0 +1,21 @@
+.terminal  {
+  flex: 1 1 300px;
+  padding: 0 2rem;
+}
+
+.messages p {
+  display: block;
+  font-family: monospace;
+  white-space:break-spaces;
+  width: 100%;
+  overflow: hidden;
+}
+
+.messages ul {
+  list-style-type: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+}

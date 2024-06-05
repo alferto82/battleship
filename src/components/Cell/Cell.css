@@ -5,6 +5,7 @@
   height: 30px;
   background-color: #8db9e2; /* Azul menos intenso */
   align-items: center;
+  border: 0px;
   justify-content: center;
 }
 

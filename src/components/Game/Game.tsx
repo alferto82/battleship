@@ -9,29 +9,31 @@ const Game: React.FC = () => {
   const { gameState, updateGameState } = useGameContext();
   const gridSize = 10;
 
+  const gameFinished = gameState.hits.length === gameState.ships.flat().length;
+
   const handleCellClick = (row: number, col: number) => {
-    const updatedHits = [...gameState.hits];
-    const updatedMisses = [...gameState.misses];
+    if (!gameFinished) {
+      const updatedHits = [...gameState.hits];
+      const updatedMisses = [...gameState.misses];
 
-    const isHit = gameState.ships.some((ship: Coordinate[]) =>
-      ship.some((part: Coordinate) => part.row === row && part.col === col)
-    );
+      const isHit = gameState.ships.some((ship: Coordinate[]) =>
+        ship.some((part: Coordinate) => part.row === row && part.col === col)
+      );
 
-    if (isHit) {
-      if (!updatedHits.some((hit) => hit.row === row && hit.col === col)) {
-        updatedHits.push({ row, col });
-        updateGameState({ ...gameState, hits: updatedHits });
-      }
-    } else {
-      if (!updatedMisses.some((miss) => miss.row === row && miss.col === col)) {
-        updatedMisses.push({ row, col });
-        updateGameState({ ...gameState, misses: updatedMisses });
+      if (isHit) {
+        if (!updatedHits.some((hit) => hit.row === row && hit.col === col)) {
+          updatedHits.push({ row, col });
+          updateGameState({ ...gameState, hits: updatedHits });
+        }
+      } else {
+        if (
+          !updatedMisses.some((miss) => miss.row === row && miss.col === col)
+        ) {
+          updatedMisses.push({ row, col });
+          updateGameState({ ...gameState, misses: updatedMisses });
+        }
       }
     }
-
-    /*  if (updatedHits.length === gameState.ships.flat().length) {
-      alert("¡Todos los barcos han sido hundidos! ¡Felicidades!");
-    } */
   };
 
   return (
@@ -42,7 +44,7 @@ const Game: React.FC = () => {
         gameState={gameState}
         onCellClick={handleCellClick}
       />
-      {gameState.hits.length === gameState.ships.flat().length && (
+      {gameFinished && (
         <div>¡Todos los barcos han sido hundidos! ¡Felicidades!</div>
       )}
     </div>

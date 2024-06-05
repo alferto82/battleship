@@ -10,3 +10,10 @@ export interface GameState {
   ships: Coordinate[][];
   misses: Coordinate[];
 }
+
+export enum CellState {
+  EMPTY = "",
+  HIT = "hit",
+  MISS = "miss",
+  SHIP = "ship",
+}

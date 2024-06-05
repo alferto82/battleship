@@ -1,7 +1,7 @@
 // src/components/Grid/Grid.tsx
 
 import React from "react";
-import { GameState } from "../../types/types";
+import { CellState, GameState } from "../../types/types";
 import Cell from "../Cell/Cell";
 import "./Grid.css";
 
@@ -28,26 +28,33 @@ const Grid: React.FC<GridProps> = ({ size, gameState, onCellClick }) => {
     return misses.some((miss) => miss.row === row && miss.col === col);
   };
 
+  const getCellState = (row: number, col: number): CellState => {
+    if (hits.some((hit) => hit.row === row && hit.col === col)) {
+      return CellState.HIT;
+    } else if (misses.some((miss) => miss.row === row && miss.col === col)) {
+      return CellState.MISS;
+    } else if (
+      ships.some((ship) =>
+        ship.some((part) => part.row === row && part.col === col)
+      )
+    ) {
+      return CellState.SHIP;
+    } else {
+      return CellState.EMPTY;
+    }
+  };
+
   return (
     <div className="grid">
       {Array.from({ length: size }).map((_, rowIndex) => (
         <div key={rowIndex} className="row">
-          {Array.from({ length: size }).map((_, colIndex) => {
-            const cellValue = isHit(rowIndex, colIndex)
-              ? "X"
-              : isMiss(rowIndex, colIndex)
-              ? "O"
-              : hasShip(rowIndex, colIndex)
-              ? "S"
-              : ""; // Actualizamos el valor de la celda para manejar "miss"
-            return (
-              <Cell
-                key={colIndex}
-                value={cellValue}
-                onClick={() => onCellClick(rowIndex, colIndex)}
-              />
-            );
-          })}
+          {Array.from({ length: size }).map((_, colIndex) => (
+            <Cell
+              key={colIndex}
+              state={getCellState(rowIndex, colIndex)}
+              onClick={() => onCellClick(rowIndex, colIndex)}
+            />
+          ))}
         </div>
       ))}
     </div>

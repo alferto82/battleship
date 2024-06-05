@@ -2,24 +2,27 @@
 
 import React from "react";
 import "./Cell.css";
+import { CellState } from "../../types/types";
 
 interface CellProps {
-  value: string;
+  state: CellState;
   onClick: () => void;
 }
 
-const Cell: React.FC<CellProps> = ({ value, onClick }) => {
+const Cell: React.FC<CellProps> = ({ state, onClick }) => {
   let className = "cell";
-  if (value === "X") {
+  if (state === CellState.HIT) {
     className += " hit";
-  } else if (value === "O") {
+  } else if (state === CellState.MISS) {
     className += " miss";
+  } else if (state === CellState.SHIP) {
+    className += " ship";
   }
 
   return (
-    <div className={className} onClick={onClick}>
-      {value}
-    </div>
+    <button className={className} onClick={onClick}>
+      {state}
+    </button>
   );
 };
 

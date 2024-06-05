@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import "./Terminal.css";
+import "./Terminal.scss";
 import { useGameContext } from "../../context/GameContext";
 
 interface TerminalProps {

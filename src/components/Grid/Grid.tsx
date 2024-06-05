@@ -4,7 +4,7 @@ import React from "react";
 import { useGameContext } from "../../context/GameContext";
 import { CellState } from "../../types/types";
 import Cell from "../Cell/Cell";
-import "./Grid.css";
+import "./Grid.scss";
 
 interface GridProps {
   onCellClick: (row: number, col: number) => void;

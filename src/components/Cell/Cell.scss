@@ -1,0 +1,23 @@
+.cell {
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  background-color: #8db9e2;
+  align-items: center;
+  border: 0px;
+  justify-content: center;
+  vertical-align: middle;
+
+  &.hit {
+    background-color: red;
+  }
+
+  &.miss {
+    background-color: gray;
+  }
+
+  &:not(.hit):not(.miss):hover {
+    background-color: #6ba8d0;
+    cursor: pointer;
+  }
+}

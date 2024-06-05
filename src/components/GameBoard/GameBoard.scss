@@ -1,19 +1,22 @@
 .title {
     text-align: center;
-}
-.gameBoard {
+  }
+  
+  .gameBoard {
     display: flex;
     justify-content: space-around;
-}
-.gameWrapper{
+  }
+  
+  .gameWrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 2rem;
-}
-
-@media (max-width: 800px) {
-    .gameBoard{
-        flex-direction: column;
+  }
+  
+  @media (max-width: 800px) {
+    .gameBoard {
+      flex-direction: column;
     }
   }
+  

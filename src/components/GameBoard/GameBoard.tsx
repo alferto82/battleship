@@ -5,8 +5,8 @@ import Grid from "../Grid/Grid";
 import { useGameContext } from "../../context/GameContext";
 import { Coordinate } from "../../types/types";
 import Terminal from "../Terminal/Terminal";
-import "./GameBoard.css";
 import { WinningMessage } from "../WinningMessage/WinningMessage";
+import "./GameBoard.scss";
 
 const GameBoard: React.FC = () => {
   const { gameState, updateGameState } = useGameContext();

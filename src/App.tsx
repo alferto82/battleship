@@ -2,8 +2,8 @@
 
 import React from "react";
 import { GameProvider } from "./context/GameContext";
-import "./App.css";
 import GameBoard from "./components/GameBoard/GameBoard";
+import "./App.scss";
 
 const App: React.FC = () => {
   return (

@@ -36,17 +36,29 @@
    ```bash
    npm install
    ```
+   or
+   ```bash
+   yarn install
+   ```
 
-3. **Run the application:**
+4. **Run the application:**
 
    ```bash
    npm start
+   ```
+   or
+   ```bash
+   yarn start
    ```
 
 ## Testing
 
 The project includes unit tests to ensure the correctness of utility functions and game logic. You can run the tests using the following command:
 
+```bash
+npm test
+```
+or
 ```bash
 npm test
 ```

@@ -20,7 +20,7 @@
 
 ## Technologies Used
 
-- **React:** Frontend framework for building the user interface.
+- **React (v18):** Frontend framework for building the user interface.
 - **TypeScript:** For static typing and improved code quality.
 - **SCSS:** Styling the components for a better user experience.
 

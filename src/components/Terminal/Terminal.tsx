@@ -63,22 +63,24 @@ const Terminal: React.FC<TerminalProps> = ({ onCellSubmit }) => {
   return (
     <div className="terminal">
       <div className="messages">
-        <p>
-          Welcome to Battleships! This is a very simple version of this game.
-          This is a one-sided game of Battleships against ships placed by the
-          computer. In this version computer has introduced 3 ships:
+        <section>
+          <p>
+            Welcome to Battleships! This is a very simple version of this game.
+            This is a one-sided game of Battleships against ships placed by the
+            computer. In this version computer has introduced 3 ships:
+          </p>
           <ul>
             <li>1x Battleship (5 squares)</li>
             <li>2x Destroyers (4 squares)</li>
           </ul>
           Try to destroy them using the fewest moves possible. You can click on
           the cells on the left side or enter a valid cell in the input field.
-        </p>
+        </section>
       </div>
       <form onSubmit={handleSubmit}>
         <input type="text" value={inputValue} onChange={handleInputChange} />
 
-        <button>Enviar</button>
+        <button>Send</button>
         {invalidInput && (
           <div className="error-message">Invalid cell value</div>
         )}

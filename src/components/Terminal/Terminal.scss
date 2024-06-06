@@ -3,13 +3,12 @@
   padding: 0 2rem;
 
   .messages {
-    p {
-      display: block;
-      font-family: monospace;
-      white-space: break-spaces;
-      width: 100%;
-      overflow: hidden;
-    }
+    display: block;
+    font-family: monospace;
+    white-space: break-spaces;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 16px;
 
     ul {
       list-style-type: none;

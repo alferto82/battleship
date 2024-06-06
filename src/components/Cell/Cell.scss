@@ -8,15 +8,15 @@
   justify-content: center;
   vertical-align: middle;
 
-  &.hit {
+  &.cell-hit {
     background-color: red;
   }
 
-  &.miss {
+  &.cell-miss {
     background-color: gray;
   }
 
-  &:not(.hit):not(.miss):hover {
+  &:not(.cell-hit):not(.cell-miss):hover {
     background-color: #6ba8d0;
     cursor: pointer;
   }

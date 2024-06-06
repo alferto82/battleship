@@ -1,14 +1,14 @@
 import { Coordinate } from "../types/types";
 
-const generateRandomCoordinate = (max: number) => {
+export const generateRandomCoordinate = (max: number) => {
   return Math.floor(Math.random() * max);
 };
 
-const isWithinBounds = (start: number, length: number, max: number) => {
+export const isWithinBounds = (start: number, length: number, max: number) => {
   return start + length <= max;
 };
 
-const isOverlapping = (ship: Coordinate[], ships: Coordinate[][]) => {
+export const isOverlapping = (ship: Coordinate[], ships: Coordinate[][]) => {
   return ships.some((existingShip) =>
     existingShip.some((part) =>
       ship.some(

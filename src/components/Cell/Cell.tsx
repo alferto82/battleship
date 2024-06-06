@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import { CellState } from "../../types/types";
 import "./Cell.scss";
 
@@ -8,18 +9,16 @@ interface CellProps {
 }
 
 const Cell: React.FC<CellProps> = ({ state, onClick }) => {
-  let className = "cell";
-  if (state === CellState.HIT) {
-    className += " hit";
-  } else if (state === CellState.MISS) {
-    className += " miss";
-  } else if (state === CellState.SHIP) {
-    className += " ship";
-  }
+  const className = classNames("cell", {
+    "cell-hit": state === CellState.HIT,
+    "cell-miss": state === CellState.MISS,
+    "cell-ship": state === CellState.SHIP,
+    "cell-empty": state === CellState.EMPTY,
+  });
 
   return (
-    <button className={className} onClick={onClick}>
-      {state.charAt(0)}
+    <button data-testid={state} className={className} onClick={onClick}>
+      {state}
     </button>
   );
 };

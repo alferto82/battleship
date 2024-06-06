@@ -2,21 +2,12 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { GameState } from "../types/types";
-import { generateShips } from "../utils/utils";
+import { initialGameState } from "./InitialGameState";
 
 interface GameContextType {
   gameState: GameState;
   updateGameState: (newState: GameState) => void;
 }
-
-const DEFAULT_SIZE = 10;
-
-const initialGameState: GameState = {
-  size: DEFAULT_SIZE,
-  hits: [],
-  ships: generateShips(DEFAULT_SIZE, [5, 4, 4]),
-  misses: [],
-};
 
 const GameContext = createContext<GameContextType>({
   gameState: initialGameState,
@@ -42,3 +33,5 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     </GameContext.Provider>
   );
 };
+
+export default GameContext;

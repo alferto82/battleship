@@ -1,47 +1,52 @@
-# Getting Started with Create React App
+# Battleship Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+**Battleship** is a strategic naval game where a single human player plays against ships randomly placed by the computer on a 10x10 grid. The objective is to sink all the computer's ships by guessing their locations.
 
-In the project directory, you can run:
+## Game Mechanics
 
-### `npm start`
+1. **Initial Setup:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   - The application creates a 10x10 grid.
+   - Ships are randomly placed on the grid with the following sizes:
+     - 1x Battleship (5 squares)
+     - 2x Destroyers (4 squares each)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. **Gameplay:**
+   - The player enters coordinates in the form (or choose clicking over the squares) of “A5”, where "A" is the column and "5" is the row, to specify a square to target.
+   - Shots result in hits, misses, or ships sinking.
+   - The game ends when all the computer's ships are sunk.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React:** Frontend framework for building the user interface.
+- **TypeScript:** For static typing and improved code quality.
+- **SCSS:** Styling the components for a better user experience.
 
-### `npm run build`
+## Installation and Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/battleship.git
+   cd battleship
+   ```
+2. **Install dependencies:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Run the application:**
 
-### `npm run eject`
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Testing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The project includes unit tests to ensure the correctness of utility functions and game logic. You can run the tests using the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# battleship
+```bash
+npm test
+```

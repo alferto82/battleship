@@ -7,6 +7,7 @@ import { Coordinate } from "../../types/types";
 import Terminal from "../Terminal/Terminal";
 import { WinningMessage } from "../WinningMessage/WinningMessage";
 import "./GameBoard.scss";
+import ExternalGrid from "../ExternalGrid/ExternalGrid";
 
 const GameBoard: React.FC = () => {
   const { gameState, updateGameState } = useGameContext();
@@ -42,8 +43,9 @@ const GameBoard: React.FC = () => {
     <div className="gameWrapper">
       <h1 className="title">Battleships Game</h1>
       <div className="gameBoard">
-        <Grid onCellClick={handleCellClick} />
-
+        <ExternalGrid>
+          <Grid onCellClick={handleCellClick} />
+        </ExternalGrid>
         <Terminal onCellSubmit={handleCellClick} />
       </div>
       {gameFinished && <WinningMessage />}

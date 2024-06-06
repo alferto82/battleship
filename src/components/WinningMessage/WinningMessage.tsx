@@ -1,4 +1,5 @@
 import { useGameContext } from "../../context/GameContext";
+import "./WinningMessage.scss";
 
 export const WinningMessage = () => {
   const { gameState } = useGameContext();
@@ -10,7 +11,7 @@ export const WinningMessage = () => {
   };
 
   return (
-    <section>
+    <section className="winningMessage">
       <p>You destroy all the ships!!! Congratulations!</p>
       <p>{`You've won the game in ${moveCount} moves.`} </p>
       <button onClick={refreshPage}>Play Again</button>

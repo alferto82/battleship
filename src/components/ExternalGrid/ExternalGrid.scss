@@ -1,0 +1,27 @@
+@import "./../../scss/variables";
+
+.externalGrid{
+  display:flex;
+  flex-direction: row;
+  
+  .leftHeader{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contentRight .topHeader{
+      display: flex;
+  }
+  .header-cell{
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    background-color: $bg_header_cell;
+    border: 1px solid $border_header_cell;
+    box-sizing: border-box;
+    line-height: 30px;
+    user-select: none;
+    font-weight: bold;
+    color: $color_header_cell;
+  }
+}

@@ -1,23 +1,25 @@
+@import "./../../scss/variables";
+
 .cell {
   width: 30px;
   height: 30px;
   margin: 2px;
-  background-color: #8db9e2;
+  background-color: $bg_cell_empty;
   align-items: center;
   border: 0px;
   justify-content: center;
   vertical-align: middle;
 
   &.cell-hit {
-    background-color: red;
+    background-color: $bg_cell_hit;
   }
 
   &.cell-miss {
-    background-color: gray;
+    background-color: $bg_cell_miss;
   }
 
   &:not(.cell-hit):not(.cell-miss):hover {
-    background-color: #6ba8d0;
+    background-color: $bg_cell_hover;
     cursor: pointer;
   }
 }

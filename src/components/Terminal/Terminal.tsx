@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from "react";
 import "./Terminal.scss";
 import { useGameContext } from "../../context/GameContext";
+import { LETTER_UPPER_A_ASCII } from "../../types/constant";
 
 interface TerminalProps {
   onCellSubmit: (row: number, col: number) => void;
 }
-
-const LETTER_UPPER_A_ASCII = 64;
 
 const Terminal: React.FC<TerminalProps> = ({ onCellSubmit }) => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -36,7 +35,7 @@ const Terminal: React.FC<TerminalProps> = ({ onCellSubmit }) => {
 
     if (
       letter < "A" ||
-      letter > String.fromCharCode(LETTER_UPPER_A_ASCII + gameState.size)
+      letter >= String.fromCharCode(LETTER_UPPER_A_ASCII + gameState.size)
     ) {
       return false; // Letter is not valid
     }
@@ -50,14 +49,14 @@ const Terminal: React.FC<TerminalProps> = ({ onCellSubmit }) => {
   };
 
   const parseCell = (cell: string): [number, number] => {
-    const row = cell[0].toLowerCase();
-    const rowNumber = row.charCodeAt(0) - "a".charCodeAt(0) + 1;
-    const col = parseInt(cell.slice(1));
+    const letter = cell[0].toLowerCase();
+    const columnNumber = letter.charCodeAt(0) - "a".charCodeAt(0) + 1;
+    const row = parseInt(cell.slice(1));
 
-    if (isNaN(col) || col < 1 || col > gameState.size) {
+    if (isNaN(row) || row < 1 || row > gameState.size) {
       throw new Error("Invalid cell");
     }
-    return [rowNumber - 1, col - 1]; // Removing 0 value
+    return [row - 1, columnNumber - 1]; // Removing 0 value
   };
 
   return (

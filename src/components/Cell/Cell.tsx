@@ -5,7 +5,7 @@ import "./Cell.scss";
 
 interface CellProps {
   state: CellState;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Cell: React.FC<CellProps> = ({ state, onClick }) => {
@@ -16,11 +16,7 @@ const Cell: React.FC<CellProps> = ({ state, onClick }) => {
     "cell-empty": state === CellState.EMPTY,
   });
 
-  return (
-    <button data-testid={state} className={className} onClick={onClick}>
-      {state}
-    </button>
-  );
+  return <button data-testid={state} className={className} onClick={onClick} />;
 };
 
 export default Cell;

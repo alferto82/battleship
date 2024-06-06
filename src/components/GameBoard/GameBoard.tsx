@@ -42,13 +42,16 @@ const GameBoard: React.FC = () => {
   return (
     <div className="gameWrapper">
       <h1 className="title">Battleships Game</h1>
-      <div className="gameBoard">
-        <ExternalGrid>
-          <Grid onCellClick={handleCellClick} />
-        </ExternalGrid>
-        <Terminal onCellSubmit={handleCellClick} />
-      </div>
-      {gameFinished && <WinningMessage />}
+      {!gameFinished ? (
+        <div className="gameBoard">
+          <ExternalGrid>
+            <Grid onCellClick={handleCellClick} />
+          </ExternalGrid>
+          <Terminal onCellSubmit={handleCellClick} />
+        </div>
+      ) : (
+        <WinningMessage />
+      )}
     </div>
   );
 };
